@@ -392,7 +392,11 @@ api-keys:
 
     Push-Location $script:CLIProxyDir
     try {
-        & $script:CLIProxyBin $loginCmd 2>&1 | ForEach-Object { Write-Host $_ }
+        if ($loginCmd -eq '--login') {
+            "2" | & $script:CLIProxyBin $loginCmd 2>&1 | ForEach-Object { Write-Host $_ }
+        } else {
+            & $script:CLIProxyBin $loginCmd 2>&1 | ForEach-Object { Write-Host $_ }
+        }
     } finally {
         Pop-Location
     }

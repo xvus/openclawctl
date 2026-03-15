@@ -910,9 +910,9 @@ PY
 		if [[ "$login_cmd" == "--login" ]]; then
 			local mode_choice
 			mode_choice=$(gum choose --cursor "❯ " \
-				--header $'  选择 Gemini 登录模式\n  ↑↓ 移动 · Enter 确认' \
-				"Code Assist（GCP 项目，手动选择）" \
-				"Google One（个人账号，自动发现项目）") || return 0
+				--header $'  选择 Gemini 登录模式\n  ↑↓ 移动 · Enter 确认（默认：Google One）' \
+				"Google One（个人账号，自动发现项目）" \
+				"Code Assist（GCP 项目，手动选择）") || return 0
 			[[ "$mode_choice" == "Code Assist"* ]] && mode_input="1" || mode_input="2"
 
 			if [[ "$mode_input" == "1" ]]; then
